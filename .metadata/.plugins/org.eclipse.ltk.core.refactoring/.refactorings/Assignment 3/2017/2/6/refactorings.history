@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;hw04.lisp&apos; to &apos;Assignment 3&apos;" description="Move &apos;hw04.lisp&apos; to &apos;Assignment 3&apos;" destination="/Assignment 3" element1="/Assignment 4/hw04.lisp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1486397587161" updateReferences="true"/>
+</session>

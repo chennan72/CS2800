@@ -1,0 +1,23 @@
+(defdata file (list String nat)
+
+
+
+Every output from ACL2 will be capitalized, a -> A
+
+(test? (implies hyp conclusion))
+(test? (implies (and R1 R2 ...))
+hyp => concl
+
+
+(test? (implies (natp n)(equal (even-natp n)(even-intp n)))
+
+(acl2s-defaults :set testing-enabled nil)
+(set-defunc-termination-strictp nil)
+(set-defunc-termination-contract-strictp nil)
+(set-defunc-body-contracts-strictp nil)
+
+
+(test? (implies (listp l) (same-same-multiplicity l l l))
+
+
+enum is for specific data
