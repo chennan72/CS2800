@@ -422,7 +422,8 @@ added to.
 ; END IGNORE
 
 ; A list of prop-vars (symbols)
-(defdata Lopv (listof symbol))
+(defdata Lopv (listof symbol))#|ACL2s-ToDo-Line|#
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEFINE
@@ -432,9 +433,9 @@ added to.
 (defunc add (a X)
  :input-contract (listp X)
  :output-contract (listp (add a X))
- (if (in a X)
-   X
-   (cons a X)))
+ (if (endp X) (cons a X)
+   (if (equal a (fisrt X)) (add a X)
+     (add a (rest X)))))
    
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -464,8 +465,7 @@ added to.
   :output-contract (listp (del e l))
   (cond ((endp l) l)
         ((equal e (first l)) (rest l))
-        (t (cons (first l) (del e (rest l))))))#|ACL2s-ToDo-Line|#
-
+        (t (cons (first l) (del e (rest l))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEFINE
@@ -475,12 +475,7 @@ added to.
 ;; in which variables appear does not matter. Recall lab 2 for 
 ;; potentially useful built-in functions
 (defunc perm (a b)
-  :input-contract (and (listp a) (listp b))
-  :output-contract (booleanp (perm a b))
-  (cond ((endp a) (endp b))
-        ((endp b) nil)
-        (t (and (in (first a) b)
-                (perm (rest a) (del (first a) b))))))
+   ..............
 
 
 (check= (perm (get-vars 'A '()) '(A)) t)
