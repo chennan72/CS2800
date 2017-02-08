@@ -58,14 +58,6 @@ The Beginner level is the next level after Bare Bones level.
 ;$ACL2s-SMode$;Beginner
 #|
 
-Names of ALL group members: Nihaal Korandla, Caden Shelman, Changzong Liu
-
-
-
-
-
-
-
 CS 2800 Homework 4 - Spring 2017
 
 The last problem in this homework requires you to see if two expressions
@@ -102,7 +94,7 @@ If your group does not already exist:
    it will cost you points, so please read carefully.
 
 
-Names of ALL group members: Nihaal Korandla, Caden Shelman, Changzong Liu
+Names of ALL group members: FirstName1 LastName1, FirstName2 LastName2, ...
 
 Note: There will be a 10 pt penalty if your names do not follow 
 this format.
@@ -224,23 +216,14 @@ falsifiable (more than one of these predicates will hold!).
 
 1. ~(p /\ q) = q => p
 
-p    q    (p / \q)    ~(p /\ q)    q => p     ~(p /\ q) = q => p
-F    F    F           T            T          T
-T    F    F           T            T          T
-F    T    F           T            F          F
-T    T    T           F            T          F
+......
 
 2. (p => q) /\ (~r = ~q) <> ~p => r  
 
-p    q    r    (p => q)    (~r = ~q)    (p => q) /\ (~r = ~q)    (p => q) /\ (~r = ~q) <> ~p    (p => q) /\ (~r = ~q) <> ~p => r 
-F    F    F    T           T            T                        T                              F
-F    F    T    T           F            F                        F                              T
-F    T    F    T           F            F                        F                              T
-F    T    T    T           T            T                        T                              T
-T    F    F    F           T            F                        T                              F
-T    F    T    F           F            F                        T                              T
-T    T    F    T           F            F                        T                              F
-T    T    T    T           T            T                        F                              T
+Hint: your table should have 8 or 11 columns (depending if you write
+the not columns including columns for p,q,r).
+
+.........
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 2. Simplify the following expressions using propositional logic rules (give 
@@ -255,93 +238,20 @@ Transformations should take the form:
    ......
 
 (a) ~p <> p \/ (q /\ p)
-
- = { Commutative }
- ~p <> p \/ (p /\ q)
- 
- = { Absorbtive }
- ~p <> p
- 
- ={ Annihilator }
- t
- 
+.........
 
 (b) (p \/ r => ((q /\ ~p) => (~r => r)))
-
- = { Def of implies }
- (p \/ r => ((q /\ ~p) => r))
- 
-  = { Def of implies }
- (p \/ r => (~(q /\ ~p) \/ r))
- 
-  = { Def of implies }
- (~(p \/ r) \/ (~(q /\ ~p) \/ r))
- 
-  = { Associtive }
- ~(p \/ r) \/ ~(q /\ ~p) \/ r)
-  
-  = { De Morgan && Distributive }
- ~(p \/ r) \/ ~q \/ p \/ r
-        
-  = { Distributive }
- ~(p \/ r) \/ ~q \/ (p \/ r)
-        
-  = { p \/ ~p = t && Def of OR}
-  t \/ ~q
-  t
-          
+.........
 
 (c) (p \/ q) /\ ((~p \/ q) /\ ~q))
 
- = { Distributive }
- (p \/ q) /\ ((~p /\ ~q) \/ (q /\ ~q))
- 
- = { De Morgan && q /\ ~q = false }
- (p \/ q) /\ ~(p \/ q) \/ false
- 
- = { Def of OR }
- (p \/ q) /\ ~(p \/ q) 
- 
- = { p /\ ~p =false }
- false
-          
+...
 
 (d) (p /\ ~q /\ r) \/ (p /\ ~q /\ ~ r) \/ (p /\ q /\ r) \/ (p /\ q /\ ~ r)
-  = { Associtive }
-  (((p /\ ~q) /\ r) \/ ((p /\ ~q) /\ ~ r)) \/ (((p /\ q) /\ r) \/ ((p /\ q) /\ ~ r))
-  
-  = { Factoring }
- ((p /\ ~q) /\ (r \/ ~r)) \/ ((p /\ q) /\ (r \/ ~r)) 
-  = { p \/ ~p = t }
-  ((p /\ ~q) /\ t) \/ ((p /\ q) /\ t)
-  
-  ={ Identity }
-  (p /\ ~q) \/ (p /\ q)
-  
-  = { Factoring }
-  p \/ (q /\ ~q)
-  
-  ={ Identity && q /\ ~q = false }
-  p
+.................
 
-  
 (e) (p = q) => ~(~p <> q)
-
- = { Def of implies }
- ~(p = q) \/ ~(~p <> q)
- 
-  = { De Morgan }
- ~((p = q) /\ (~p <> q))
- 
-  = { XOR = not EQUAL }
- ~((p = q) /\ (p = q))
- 
-  = { Def of AND }
-  ~(p = q)
-
-  = { XOR = not EQUAL }
-  p <> q
-
+.................
 
 
 |#
@@ -364,59 +274,22 @@ assignments that show satisfiability or falsifiability.
 
 (A) p =  (q => (p => p))
 
-  = { Def of implies }
-  p =  (q => (~p \/ p))
-  = { Def of implies }
-  p =  (~q \/ (~p \/ p))
-  = { Identity && ~p \/ p = t }
-  p = t
-  
-  Satisfiable & Falsifiable
+....
 
 (B) (p => q) <> (~ q  /\ p)
 
-p    q    (p => q)    (~ q  /\ p)    (p => q) <> (~ q  /\ p)
-0    0    1           0              1
-1    0    0           1              1
-0    1    1           0              1
-1    1    1           0              1
- 
- Satisfiable && Valid
+....
 
 (C) (((false /\ ~ p) \/ p) => p)
-  = { Def of implies }
-  ((false \/ p) => p)
-  = { Identity }
-  p => p
-  = { Def of implies }
-  ~p \/ p = t
-  
-  Satisfiable & Valid
+
+....
 
 (D) [(~(p /\ q) \/ r) /\ (~p \/ ~q \/ ~ r)] <> (p /\ q)
 
-  = { De Morgan && Associative }
-  [((~p \/ ~q) \/ r) /\ ((~p \/ ~q) \/ ~ r)] <> (p /\ q)
-  = { Factoring }
-  ((~p \/ ~q) /\ (r \/ ~r)) <> (p /\ q)
-  = { Identity && r \/ ~r = true}
-  (~p \/ ~q) <> (p /\ q)
-  = { De Morgan}
-  ~(p /\ q) <> (p /\ q)
-  = { p XOR ~p = t }
-  t
-  
-  Valid && Satisfiable
-  
+....
+
 (E) ~ (p => ~ q \/ q)
-
-p    q    ~ q \/ q    ~ (p => ~ q \/ q)
-0    0    1           0
-0    1    1           0
-1    0    1           0
-1    1    1           0
-
- Unsatisfiable && Falsifiable
+......
 
 |#
 
@@ -566,7 +439,7 @@ added to.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IMPROVE (make the IC and OC better)
-;; get-vars: PropEx Lopv -> Lopv 
+;; get-vars: PropEx List -> List 
 ;; get-vars returns a list of variables appearing in px OR
 ;;   in the provided accumulator acc. If acc has
 ;;   no duplicates in it, then the returned list should not have
@@ -574,8 +447,8 @@ added to.
 ;; NOTICE: the way you traverse px for get-vars will be how you traverse
 ;; expressions in later functions you will write.
 (defunc get-vars (px acc)
-  :input-contract (and (PropExp px) (Lopvp acc))
-  :output-contract (Lopvp (get-vars px acc))
+  :input-contract (and (PropExp px) (listp acc))
+  :output-contract (listp (get-vars px acc))
   (cond ((booleanp px) acc)
         ((atom px) (add px acc))
         ((UnaryOpp (first px)) (get-vars (second px) acc))
@@ -591,7 +464,8 @@ added to.
   :output-contract (listp (del e l))
   (cond ((endp l) l)
         ((equal e (first l)) (rest l))
-        (t (cons (first l) (del e (rest l))))))
+        (t (cons (first l) (del e (rest l))))))#|ACL2s-ToDo-Line|#
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEFINE
@@ -620,20 +494,14 @@ added to.
 ;; The update function "updates a variable" by replacing all instances
 ;; of the variable with the boolean val in the expression px.
 ;; This is a function that has two recursive calls on a single line.  
-;; Look to get-vars (above)
+;; Look to get-pxvars (above) if you need help figuring out how to write it.
 (defunc update (px name val)
-  :input-contract (and (PropExp px) (symbolp name) (booleanp val))
-  :output-contract (Propexp (update px name val))
-  (cond ((booleanp px)         px)
-        ((symbolp px)          (if (equal px name) val px))
-        ((UnaryOpp (first px)) (list (first px) (update (second px) name val)))
-        (t                     (list (update (first px) name val) 
-                                     (second px) (update (third px) name val)))))
+  ..........
   
 (check= (update T 'A NIL) T)
 (check= (update 'A 'A NIL) NIL)
-(check= (update (list '~ 'P) 'P NIL) (list '~ NIL))
-(check= (update (list 'P '<> (list '~ 'P)) 'P T) (list T '<> (list '~ T)))
+;; Add additional tests
+........
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEFINE
@@ -641,44 +509,12 @@ added to.
 ;; (ConstBoolExp px) determines if px is a PropEx 
 ;; with NO symbols / free variables.
 (defunc ConstBoolExp (px)
-  :input-contract t
-  :output-contract (booleanp (ConstBoolExp px))
-  (if (propExp px)
-    (endp (get-vars px '()))
-    nil))
-
-(check= (ConstBoolExp NIL) T)
-(check= (ConstBoolExp T) T)
-(check= (ConstBoolExp 'P) NIL)
-(check= (ConstBoolExp (list '~ T)) T)
-(check= (ConstBoolExp (list '~ 'P)) NIL)
-(check= (ConstBoolExp (list T '^ 'Q)) NIL)
-
-
-;; HELPER
-;; bineval: Boolean x BinaryOp x Boolean -> Boolean
-;; bineval evaluates a binary boolean expression given two booleans
-;; and a symbol representing a binary operation
-(defunc bineval (b1 binop b2)
-  :input-contract (and (booleanp b1) (BinaryOpp binop) (booleanp b2))
-  :output-contract (booleanp (bineval b1 binop b2))
-  (cond ((equal binop '^)  (and b1 b2))
-        ((equal binop 'v)  (or b1 b2))
-        ((equal binop '=>) (or (not b1) b2))
-        ((equal binop '==) (equal b1 b2))
-        (t                 (or (and b1 (not b2)) (and (not b1) b2)))))
-
-(check= (bineval T '^ T) T)
-(check= (bineval NIL 'v NIL) NIL)
-(check= (bineval T '=> NIL) NIL)
-(check= (bineval NIL '== NIL) T)
-(check= (bineval NIL '<> T) T)
-
-:program
+ ........
+ 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEFINE
-;; beval: PropEx -> Boolean
+;; beval: PropEx -> Booleanp
 ;; beval evaluates a constant boolean expression and return its value.  
 ;; A constant boolean expression is a PropEx with no variables, 
 ;; just booleans and operators. If this expression has variables, then
@@ -688,13 +524,9 @@ added to.
 ;; of ConstBoolExp is much more difficult. Hence you can just check)
 (defunc beval (bx)
   :input-contract (PropExp bx)
-  :output-contract (booleanp (beval bx))
-  (cond ((not (ConstBoolExp bx)) NIL)
-        ((booleanp bx)           bx)
-        ((UnaryOpp (first bx))   (not (beval (second bx))))
-        (t                       (bineval (beval (first bx)) (second bx) (beval (third bx)))))) 
+  :output-contract (Booleanp (beval bx))
+  ..........
   
-         
 (check= (beval T) T)
 (check= (beval NIL) NIL)
 (check= (beval '(T ^ NIL)) NIL)
@@ -702,12 +534,12 @@ added to.
 (check= (beval '(T v NIL)) T)
 (check= (beval '(~ T)) NIL)
 
-:logic
 
-;; GIVEN  a list of boolean expression PAIRS that can be evaluated.
-(defdata px-pair (list PropEx PropEx))
+;; DEFINE a list of boolean expression PAIRS that can be evaluated.
+(defdata px-pair .... )
 ;; DEFINE a list of px-pairs.
-(defdata lopxpair (listof px-pair))
+(defdata lopxpair ....)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GIVEN
@@ -743,11 +575,11 @@ added to.
  3) for each set of variable substitutions, the substituted 
  p1 and p2 form a pair of constant boolean expressions (CBE).
  4) call beval on pairs of constant boolean expressions until
-    there are two evaluations which are not equal or you evaluate
-    all pairs.
+   there are two evaluations which are not equal or you evaluate
+   all pairs.
  If all pairs are equivalent, then p1 and p2 are logically equivalent
 |#
-;; <<@QUESTION_5>>
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEFINE
 ;; equal_px_pair: px-pair -> boolean
@@ -757,23 +589,16 @@ added to.
 (defunc equal_px_pair (pair)
   :input-contract (px-pairp pair)
   :output-contract (booleanp (equal_px_pair pair))
-  (equal (beval (first pair)) (beval (second pair))))
-
-(check= (equal_px_pair (list T T)) T)
-(check= (equal_px_pair (list T NIL)) NIL)
-(check= (equal_px_pair (list (list '~ NIL) (list T 'v NIL))) T)
-(check= (equal_px_pair (list (list T '=> NIL) (list NIL '== NIL))) NIL)
-
-    
+  .......
   
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GIVEN
-;; equal_pxp_list: lopxpair -> boolean
+;; equal_pxp_list: lopxpairair -> boolean
 ;; (equal_pxp_list pxl) takes a list of px pairs (pxl)
 ;; and returns true if and only if each px pair is
 ;; considered equivalent
 (defunc equal_pxp_list (pxl)
-  :input-contract (lopxpairp pxl)
+  :input-contract (lopxpairairp pxl)
   :output-contract (booleanp (equal_pxp_list pxl))
   (cond ((endp pxl)                  t)
         ((equal_px_pair (first pxl)) (equal_pxp_list (rest pxl)))
@@ -787,37 +612,11 @@ added to.
 ;; variables from px1 and px2. There are no duplicats
 ;; in the returned list.
 (defunc gen_vars_list (px1 px2)
-  :input-contract (and (PropExp px1) (PropExp px2))
-  :output-contract (Lopvp (gen_vars_list px1 px2))
-  (get-vars px1 (get-vars px2 '())))
-
-(check= (gen_vars_list T T) NIL)
-(check= (gen_vars_list T (list '~ T)) NIL)
-(check= (gen_vars_list (list 'P '^ 'P) (list 'Q '== NIL)) '(P Q))
-(check= (gen_vars_list (list 'P '^ (list '~ 'Z)) (list 'Z 'v T)) '(P Z))
-         
-;; gen_lopxpair_1var: lopxpair x Symbol -> lopxpair
-;; takes a list of propex pairs and one variable and returns a new list (2x size)
-;; with half of the pairs replaced with the variable = true and the other
-;; half replaced with nil
-(defunc gen_lopxpair_1var (lst var)
-  :input-contract (and (lopxpairp lst) (symbolp var))
-  :output-contract (lopxpairp (gen_lopxpair_1var lst var))
-  (cond ((endp lst) '())
-        (t          (app (list (list (update (first (first lst)) var T) 
-                                     (update (second (first lst)) var T))
-                               (list (update (first (first lst)) var NIL) 
-                                     (update (second (first lst)) var NIL)))
-                         (gen_lopxpair_1var (rest lst) var)))))
-
-(check= (gen_lopxpair_1var '() 'Q) '())
-(check= (gen_lopxpair_1var (list '(Q Q)) 'Q) '((T T) (NIL NIL)))
-(check= (gen_lopxpair_1var (list '(P Q) '(Q P)) 'Q) (list '(P T) '(P NIL)
-                                                          '(T P) '(NIL P)))
+  ......
   
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEFINE
-;; gen_cbe_pairs_list: PropEx x PropEx x Lopv -> lopxpair
+;; gen_cbe_pairs_list: PropEx x PropEx x Lopv -> lopxpairp
 ;; (gen_cbe_pairs_list px1 px2 vars) takes two 
 ;; propositional expressions p1 and p2.  
 ;; For each variable in the list of variables vars, replace
@@ -831,12 +630,7 @@ added to.
 ;; Form a pair of cbes for each variable substitution and return the
 ;; list of all such pairs.
 (defunc gen_cbe_pairs_list (px1 px2 vars)
-  :input-contract (and (PropExp px1) (PropExp px2) (Lopvp vars))
-  :output-contract (lopxpairp (gen_cbe_pairs_list px1 px2 vars))
-  (cond ((endp vars)        (list (list px1 px2)))
-        (t                  (gen_lopxpair_1var (gen_cbe_pairs_list px1 px2 (rest vars)) 
-                                               (first vars)))))
-
+  ...........
   
 ;; Test constants you can modify or add to. Giant expressions with > 4
 ;; variables may be too slow to run.
@@ -848,24 +642,16 @@ added to.
 (defconst *pxtest6* T)
 (defconst *pxtest7* '(~ A))
 
-(check= (perm (gen_cbe_pairs_list *pxtest2* *pxtest4* '(A B))
-              (list (list '(t ^ (t v t)) '(t => (t <> t)))
-                    (list '(t ^ (nil v t)) '(t => (t <> t)))
-                    (list '(nil ^ (t v nil)) '(nil => (nil <> nil)))
-                    (list '(nil ^ (nil v nil)) '(nil => (nil <> nil))))) T)
-(check= (perm (gen_cbe_pairs_list *pxtest3* *pxtest4* '(A))
-              '((((T ^ B) ^ (C V D)) (T => (T <> T)))
-                (((NIL ^ B) ^ (C V D))
-                 (NIL => (NIL <> NIL))))) T)
+(check= (gen_cbe_pairs_list *pxtest2* *pxtest4* '(A B))
+        (list (list '(t ^ (t v t)) '(t => (t <> t)))
+              (list '(t ^ (nil v t)) '(t => (t <> t)))
+              (list '(nil ^ (t v nil)) '(nil => (nil <> nil)))
+              (list '(nil ^ (nil v nil)) '(nil => (nil <> nil)))))
 
 ;; Write a test? that checks whether gen_cbe_pairs_list truly
 ;; creates pairs of constant boolean expressions given
 ;; arbitrary propositional expressions.
-(test? (implies (and (PropExp px1)
-                     (PropExp px2))
-                     (equal (cbe-listp (gen_cbe_pairs_list 
-                                        px1 px2 (gen_vars_list px1 px2)))
-                            T)))
+...........
 
 (check= (gen_cbe_pairs_list *pxtest4* *pxtest5* '(A))
         (list (list '(t => (t <> t)) '(~ t))
@@ -879,11 +665,9 @@ added to.
 ;; function you should call from the REPL. This should be a one
 ;; line (for the body) non-recursive function.
 (defunc equal-expressions (px1 px2)
-  :input-contract (and (PropExp px1) (PropExp px2))
-  :output-contract (booleanp (equal-expressions px1 px2))
-  (equal_pxp_list (gen_cbe_pairs_list px1 px2 (gen_vars_list px1 px2))))
+  ............
   
 (check= (equal-expressions *pxtest1* *pxtest2*) t)
 (check= (equal-expressions *pxtest2* *pxtest3*) nil)
 (check= (equal-expressions *pxtest1* *pxtest7*) nil)
-(check= (equal-expressions *pxtest4* *pxtest7*) t)#|ACL2s-ToDo-Line|#
+(check= (equal-expressions *pxtest4* *pxtest7*) t)

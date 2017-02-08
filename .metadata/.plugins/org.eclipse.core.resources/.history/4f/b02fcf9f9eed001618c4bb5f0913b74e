@@ -886,4 +886,4 @@ added to.
 (check= (equal-expressions *pxtest1* *pxtest2*) t)
 (check= (equal-expressions *pxtest2* *pxtest3*) nil)
 (check= (equal-expressions *pxtest1* *pxtest7*) nil)
-(check= (equal-expressions *pxtest4* *pxtest7*) t)#|ACL2s-ToDo-Line|#
+(check= (equal-expressions *pxtest4* *pxtest7*) t)

@@ -275,20 +275,19 @@ Transformations should take the form:
  (p \/ r => (~(q /\ ~p) \/ r))
  
   = { Def of implies }
- (~(p \/ r) \/ (~(q /\ ~p) \/ r))
+ (p \/ ~r \/ (~(q /\ ~p) \/ r))
  
   = { Associtive }
- ~(p \/ r) \/ ~(q /\ ~p) \/ r)
+ (p \/ ~(q /\ ~p) \/ ~r \/ r ))
   
-  = { De Morgan && Distributive }
- ~(p \/ r) \/ ~q \/ p \/ r
+  = { De Morgan && ~r \/ r = false && Def of OR }
+ (p \/ (~q \/ p) )
         
-  = { Distributive }
- ~(p \/ r) \/ ~q \/ (p \/ r)
+  = { Associtive }
+ (p \/ p \/ ~q)
         
-  = { p \/ ~p = t && Def of OR}
-  t \/ ~q
-  t
+  = { Def of OR && p \/ p = p}
+  p \/ ~q
           
 
 (c) (p \/ q) /\ ((~p \/ q) /\ ~q))
@@ -296,14 +295,11 @@ Transformations should take the form:
  = { Distributive }
  (p \/ q) /\ ((~p /\ ~q) \/ (q /\ ~q))
  
- = { De Morgan && q /\ ~q = false }
- (p \/ q) /\ ~(p \/ q) \/ false
+  = { De Morgan && q /\ ~q = false && Def of OR }
+ (p \/ q) /\ (p \/ q)
  
- = { Def of OR }
- (p \/ q) /\ ~(p \/ q) 
- 
- = { p /\ ~p =false }
- false
+  = { Def of AND }
+  p \/ q 
           
 
 (d) (p /\ ~q /\ r) \/ (p /\ ~q /\ ~ r) \/ (p /\ q /\ r) \/ (p /\ q /\ ~ r)
@@ -324,23 +320,19 @@ Transformations should take the form:
   ={ Identity && q /\ ~q = false }
   p
 
-  
 (e) (p = q) => ~(~p <> q)
 
  = { Def of implies }
  ~(p = q) \/ ~(~p <> q)
  
   = { De Morgan }
- ~((p = q) /\ (~p <> q))
+ ((p \/ q) /\ (~p <> q))
  
-  = { XOR = not EQUAL }
- ~((p = q) /\ (p = q))
+  = { Def of XOR }
+ ((p \/ q) /\ ((p \/ ~q) /\ (~p \/ q)))
  
-  = { Def of AND }
-  ~(p = q)
-
-  = { XOR = not EQUAL }
-  p <> q
+  = { Def of implies }
+  (p \/ q) /\ (p == q)
 
 
 
@@ -376,12 +368,12 @@ assignments that show satisfiability or falsifiability.
 (B) (p => q) <> (~ q  /\ p)
 
 p    q    (p => q)    (~ q  /\ p)    (p => q) <> (~ q  /\ p)
-0    0    1           0              1
-1    0    0           1              1
-0    1    1           0              1
-1    1    1           0              1
+0    0    1           0              0
+1    0    0           1              0
+0    1    1           0              0
+1    1    1           0              0
  
- Satisfiable && Valid
+ Unsatisfiable && Falsifiable
 
 (C) (((false /\ ~ p) \/ p) => p)
   = { Def of implies }
@@ -398,23 +390,19 @@ p    q    (p => q)    (~ q  /\ p)    (p => q) <> (~ q  /\ p)
   = { De Morgan && Associative }
   [((~p \/ ~q) \/ r) /\ ((~p \/ ~q) \/ ~ r)] <> (p /\ q)
   = { Factoring }
-  ((~p \/ ~q) /\ (r \/ ~r)) <> (p /\ q)
-  = { Identity && r \/ ~r = true}
-  (~p \/ ~q) <> (p /\ q)
-  = { De Morgan}
-  ~(p /\ q) <> (p /\ q)
-  = { p XOR ~p = t }
-  t
+  ((~p \/ ~q) \/ (r /\ ~r)
+  = { Identity && r /\ ~r = false && De Morgan}
+  ~(p /\ q)
   
-  Valid && Satisfiable
-  
+  Satisfiable && Falsifiable
+
 (E) ~ (p => ~ q \/ q)
 
-p    q    ~ q \/ q    ~ (p => ~ q \/ q)
+p    q    p => ~ q    ~ (p => ~ q \/ q)
 0    0    1           0
 0    1    1           0
 1    0    1           0
-1    1    1           0
+1    1    0           0
 
  Unsatisfiable && Falsifiable
 
@@ -886,4 +874,4 @@ added to.
 (check= (equal-expressions *pxtest1* *pxtest2*) t)
 (check= (equal-expressions *pxtest2* *pxtest3*) nil)
 (check= (equal-expressions *pxtest1* *pxtest7*) nil)
-(check= (equal-expressions *pxtest4* *pxtest7*) t)#|ACL2s-ToDo-Line|#
+(check= (equal-expressions *pxtest4* *pxtest7*) t)
