@@ -9,13 +9,13 @@
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
 			<item value="program"/>
+			<item value="begin"/>
+			<item value="beginner"/>
 			<item value="propex"/>
 			<item value="atom"/>
 			<item value="section"/>
 			<item value="get-pxvars"/>
 			<item value="proex"/>
-			<item value="median"/>
-			<item value="lorp"/>
 		</list>
 		<list key="replacehistory">
 		</list>

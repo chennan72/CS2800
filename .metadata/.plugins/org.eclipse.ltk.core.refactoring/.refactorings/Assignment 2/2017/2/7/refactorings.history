@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Assignment 2/HW02 finished.lisp&apos; to &apos;HW02.lisp&apos;" description="Rename resource &apos;HW02 finished.lisp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="HW02 finished.lisp" name="HW02.lisp" stamp="1487109744517" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Assignment 2/HW02 finished.lisp.a2s&apos; to &apos;HW02.lisp.a2s&apos;" description="Rename resource &apos;HW02 finished.lisp.a2s&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="HW02 finished.lisp.a2s" name="HW02.lisp.a2s" stamp="1487109754166" updateReferences="true"/>
+</session>
