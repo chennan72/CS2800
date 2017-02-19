@@ -82,24 +82,9 @@ available for you to use.
          (equal (length (concat x y))
                 (length (concat y x))))
 
-C1. (listp x)
-C2. (listp y)
-C3. (listp (concat x y)) (def.length)
+Hint: carefully look at the involved functions' definitions.
 
-
-(length (concat x y))
-{def.length}
-
-(+ (length x) (length y))
-{commutative}
-
-(+ (length y) (length x))
-=
-(length (concat y x))
-t
-
-
-
+...
 
 2.
 
@@ -108,55 +93,16 @@ t
          (equal (length (concat (reverse x) (reverse y)))
                 (length (reverse (concat x y)))))
 
-(length (concat (reverse x) (reverse y)))
-{def.length}
-
-(+ (length (reverse x)) (length (reverse y)))
-{def.reverse}
-
-(+ (length x) (length y))
-{def.length}
-
-(length (concat x y))
-{def.reverse}
-
-(length (reverse (concat (x y))))
-t
+...
 
 3.
 
-(implies (natlistp x)     
-         
-         (and 
-          
-          (implies (endp x)
-              (equal (sum (reverse x)) (sum x)))
-             
-         (implies (and (natp a)
-                       (equal (sum (reverse x)) (sum x))) 
-                  (equal (sum (reverse (cons a x))) (sum (cons a x))))))
-
-(1) 
-C1. (endp x)
-C2. (listp x) (contract)
-C3. x = nil
-
-(equal (sum (reverse x)) (sum x))
-{def.reverse}
-
-(equal (sum (if (endp x) nil (concat (reverse (rest x)) (list (first x))))) (sum x))
-{C3}
-
-(equal (sum (if (endp nil) nil (concat (reverse (rest nil)) (list (first nil))))) (sum nil))
-{def.endp}
-
-(equal (sum (if t nil (concat (reverse (rest nil)) (list (first nil))))) (sum nil))
-{def.if}
-
-(equal (sum nil) (sum nil))
-t
-
-
+(implies (natlistp x)
+         (and (implies (endp x)
+                       (equal (sum (reverse x)) (sum x)))
+              (implies (and (natp a)
+                            (equal (sum (reverse x)) (sum x)))
+                       (equal (sum (reverse (cons a x))) (sum (cons a x))))))
 
 For your conjecture contract checking, you can assume that a natlist is a
 list, that reversing a natlist results in a natlist, and that consing a nat
@@ -195,7 +141,6 @@ Using equational reasoning, prove the following:
 (and (implies (endp l)
               (equal (scale (scale l n1) n2)
                      (scale l (* n1 n2))))
-     
      (implies (and (consp l)
                    (equal (scale (scale (rest l) n1) n2)
                           (scale (rest l) (* n1 n2))))
