@@ -1,62 +1,9 @@
-; **************** BEGIN INITIALIZATION FOR ACL2s B MODE ****************** ;
-; (Nothing to see here!  Your actual file is after this initialization code);
-
 #|
-Pete Manolios
-Fri Jan 27 09:39:00 EST 2012
-----------------------------
 
-Made changes for spring 2012.
+Names of ALL group members: Nihaal Korandla, Caden Shelman, Changzong Liu
 
 
-Pete Manolios
-Thu Jan 27 18:53:33 EST 2011
-----------------------------
 
-The Beginner level is the next level after Bare Bones level.
-
-|#
-
-; Put CCG book first in order, since it seems this results in faster loading of this mode.
-#+acl2s-startup (er-progn (assign fmt-error-msg "Problem loading the CCG book.~%Please choose \"Recertify ACL2s system books\" under the ACL2s menu and retry after successful recertification.") (value :invisible))
-(include-book "ccg/ccg" :uncertified-okp nil :dir :acl2s-modes :ttags ((:ccg)) :load-compiled-file nil);v4.0 change
-
-;Common base theory for all modes.
-#+acl2s-startup (er-progn (assign fmt-error-msg "Problem loading ACL2s base theory book.~%Please choose \"Recertify ACL2s system books\" under the ACL2s menu and retry after successful recertification.") (value :invisible))
-(include-book "base-theory" :dir :acl2s-modes)
-
-#+acl2s-startup (er-progn (assign fmt-error-msg "Problem loading ACL2s customizations book.~%Please choose \"Recertify ACL2s system books\" under the ACL2s menu and retry after successful recertification.") (value :invisible))
-(include-book "custom" :dir :acl2s-modes :uncertified-okp nil :ttags :all)
-
-;Settings common to all ACL2s modes
-(acl2s-common-settings)
-
-#+acl2s-startup (er-progn (assign fmt-error-msg "Problem loading trace-star and evalable-ld-printing books.~%Please choose \"Recertify ACL2s system books\" under the ACL2s menu and retry after successful recertification.") (value :invisible))
-(include-book "trace-star" :uncertified-okp nil :dir :acl2s-modes :ttags ((:acl2s-interaction)) :load-compiled-file nil)
-(include-book "hacking/evalable-ld-printing" :uncertified-okp nil :dir :system :ttags ((:evalable-ld-printing)) :load-compiled-file nil)
-
-;theory for beginner mode
-#+acl2s-startup (er-progn (assign fmt-error-msg "Problem loading ACL2s beginner theory book.~%Please choose \"Recertify ACL2s system books\" under the ACL2s menu and retry after successful recertification.") (value :invisible))
-(include-book "beginner-theory" :dir :acl2s-modes :ttags :all)
-
-
-#+acl2s-startup (er-progn (assign fmt-error-msg "Problem setting up ACL2s Beginner mode.") (value :invisible))
-;Settings specific to ACL2s Beginner mode.
-(acl2s-beginner-settings)
-
-; why why why why 
-(acl2::xdoc acl2s::defunc) ; almost 3 seconds
-
-(cw "~@0Beginner mode loaded.~%~@1"
-    #+acl2s-startup "${NoMoReSnIp}$~%" #-acl2s-startup ""
-    #+acl2s-startup "${SnIpMeHeRe}$~%" #-acl2s-startup "")
-
-
-(acl2::in-package "ACL2S B")
-
-; ***************** END INITIALIZATION FOR ACL2s B MODE ******************* ;
-;$ACL2s-SMode$;Beginner
-#|
 CS 2800 Homework 5 - Spring 2017
 ;; <<@PREAMBLE>>
 
@@ -86,7 +33,7 @@ If your group does not already exist:
    it will cost you points, so please read carefully.
 
 
-Names of ALL group members: FirstName1 LastName1, FirstName2 LastName2, ...
+Names of ALL group members: Nihaal Korandla, Caden Shelman, Changzong Liu
 
 Note: There will be a 10 pt penalty if your names do not follow 
 this format.
@@ -144,8 +91,9 @@ c. (or (endp u) (app u (cons w nil))))|
 
 d. (* (* y (/ y (len z))) (+ (len z) y))|
    ((len (/ a b)) (y (/ a b)))
-   ??????????
-   (* (* (/ a b) (/ (/ a b) ((* y z) z))) (+ ((/ a b) z) (/ a b)))
+   
+   (* (* (/ a b) (/ (/ a b) (len z))) (+ (len z) (/ a b)))
+   cannot substitue for len because it is used as a function
    
 e. (equal (+ (+ (len x) (len y)) (len 'z)) (len (cons z (app 'x y))))|
    ((x '(2 8)) (y '(5 6)) (z '(3)))
@@ -153,9 +101,9 @@ e. (equal (+ (+ (len x) (len y)) (len 'z)) (len (cons z (app 'x y))))|
    (equal (+ (+ (len '(2 8)) (len '(5 6))) (len 'z)) (len (cons '(3) (app 'x '(5 6)))))
 
 f. (cons u (app u w))|
-   ((u (app w w))(w (app b a)) (w (list w)))
-   ????????????
-   (cons (app w w) (app (app w w) w))
+   ((u (app w w)) (w (app b a)) (w (list w)))
+   
+   invalid because double substitution for w
    
 g. (app u w)|
    ((w (app u w)) (u w))
@@ -163,9 +111,10 @@ g. (app u w)|
    (app w (app u w))
    
 h. (cons u (f u w f))|
-   ((u (cons a b))(f u)(w (app w u)))
+   ((u (cons a b)) (f u) (w (app w u)))
    
-   (cons (cons a b) (u (cons a b) (app w u) u))
+   (cons (cons a b) (f (cons a b) (app w u) u))
+   cannot substitute for f when it is used as a function
    
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 Question 2: Finding a substitution, if it exists.
@@ -205,7 +154,7 @@ e. (in x y)
 f. (app (list a b) b)
    (app (list c d) (first (cons d nil)))
    
-   None??????????
+   None
   
 g. (app a (app (cons b c) c))
    (app '(1 2) (app (cons c (cons b c)) (cons b c)))
@@ -215,7 +164,7 @@ g. (app a (app (cons b c) c))
 h. (cons y (app (list x)  y))
    (cons (- (expt 2 6) w) (app (list (- (expt 2 6) w)) (- (expt 2 6) q)))
    
-   ((y (- (expt 2 6) w)) (x (- (expt 2 6) w)))
+   None
 
 |#
 
@@ -356,21 +305,49 @@ For each of the conjectures in questions 3-7:
 3.  (implies (and (listp n) (equal m nil))
              (equal (comb-len m n) 0))
 
+C1: (listp n)
+C2: (equal m nil)
+-------------------
 
-...............................
+  (equal (comb-len m n) 0)
+= { Def of comb-len }
+  (equal (if (endp m) 0 (+ (len2 n) (comb-len (rest m) n))) 0)
+= { C2, Def of endp }
+  (equal (0 0))
+= { Def of equal }
+  t
+  
+QED
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION4>>
 4.  (implies (in2 x l)
              (in2 x (cons a l)))
-.................
+             
+C1: (in2 x l)   
+----------------
+C2: (not (endp l)) { Def of in2, C1 } 
 
+  (in2 x (cons a l))
+= { Def of in2, C2 }
+  (or (equal x (first (cons a l))) (in2 x (rest (cons a l))))
+= { first-rest axioms }
+  (or (equal x a) (in2 x l))
+= { C1, Prop Logic }
+  t
+
+QED
+  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION5>>
 5. (implies (listp l)
             (> (len2 (duplicate l)) (len2 l)))
 
-...............
+Counterexample: substitute nil for l
+                (listp nil) = t
+                (> (len2 (duplicate nil)) (len2 nil)) = (> 0 0) = f
+                (t => f) = f
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION6>>
@@ -378,7 +355,18 @@ For each of the conjectures in questions 3-7:
             (equal (comb-len m n)
                    (+ x (len2 m))))
 
-...............
+Counterexample: substitute (list 1 1) for m, (list 1 1 1) for n
+                x = (comb-len (list 1) (list 1 1 1)) = (len2 (list 1 1 1)) + 0
+                  = 3
+                (comb-len (list 1 1) (list 1 1 1)) = (len2 (list 1 1 1)) + 
+                    (len2 (list 1 1 1)) + 0 = 3 + 3 + 0 = 6
+                (+ x (len2 (list 1 1))) = x + 2 = 5
+                (equal 5 6) = f
+                (t => f) = f
+                
+                (comb-len essentially multiplies the lengths of the two lists,
+                since x = len n * len (m - 1), then len n * len m = x + len n,
+                not x + len m)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION7>>
@@ -387,7 +375,28 @@ For each of the conjectures in questions 3-7:
             (equal (in2 a l)
                    (in2 a (duplicate l))))
 
-...............
+C1. (in2 a (rest l)) = (in2 a (duplicate (rest l)))
+C2. (listp l)
+C3. (not (endp l))
+- - - - - - - - - - -
+C4. (in2 a (rest l)) => (in2 a l) {def in2, C2, C3}
+
+(in2 a (duplicate l))
+= {def duplicate, C2, C3}
+(in2 a (cons (first l) (cons (first l) (duplicate (rest l)))))
+= {def in2, C2, C3}
+(or (equal a (first l)) (in2 a (cons (first l) (duplicate (rest l)))))
+= {def in2, C2, C3}
+(or (equal a (first l)) (in2 a (duplicate (rest l))))
+= {PL}
+(in2 a (duplicate (rest l)))
+= {C1}
+(in2 a (rest l))
+= {C4}
+(in2 a l)
+ 
+QED
+
 
 |#
 
@@ -434,39 +443,78 @@ have to perform contract completion first!
 8. The length of the list obtained by appending x and y is 
    equal to the length of x plus the length of y.
 
-...............
+(implies (and (listp x) (listp y))
+         (equal (len (app x y))
+                (+ (len x) (len y))))
+                
+This conjecture is valid.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION9>>
 9. Reversing a list three times gives back the original list.
 
-...............
+(implies (listp x)
+         (equal x (rev (rev (rev x)))))
+         
+This conjecture is invalid, reversing 3 times gives you the reversed list.
+To make it valid, you can change it to reversing 4 times (or any even num).
+
+(implies (listp x)
+         (equal x (rev (rev (rev (rev x))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION10>>
 10. If a is in (use the function in2) the append of x y and a is
     not in x, then a is in y.
 
-...............
+(implies (and (in2 a (append x y))
+              (not (in2 a x)))
+         (in2 a y))
+         
+This conjecture is valid.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION11>>
 11. If a is in (use in2) the append of x y and a is in x, then a is
     not in y.
 
-...............
+(implies (and (in2 a (append x y))
+              (in2 a x))
+         (not (in2 a y)))
+         
+This conjecture is not valid, a can be in both x and y if it is in their append.
+To make it valid, you can change it to be the same as the previous question.
+(if it is in the append of two lists and not in one list, it's in the other list)
+
+(implies (and (in2 a (append x y))
+              (not (in2 a y)))
+         (in2 a x))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION12>>
 12. The comb-len of x and x is x*x.
 
-...............
+(implies (listp x)
+         (equal (comb-len x x)
+                (* x x)))
+                
+This conjecture is invalid because comb-len produces the product of the lengths
+of the two lists, not the product of the two lists.
+To make it valid, change it to be the length of x.
+
+(implies (listp x)
+         (equal (comb-len x x)
+                (* (len2 x) (len2 x))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION13>>
 13. The comb-len of x and y is the same as the comb-len of y and x.
 
-...............
+(implies (and (listp x) (listp y))
+         (equal (comb-len x y)
+                (comb-len y x)))
+                
+This conjecture is valid.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION14>>
@@ -474,14 +522,38 @@ have to perform contract completion first!
     iff the length of x is equal to the length of a and the
     length of y is equal to the length of b.
 
-...............
+(implies (and (listp x) (listp y) (listp a) (listp b)
+              (equal (comb-len x y) (comb-len a b)))
+         (and (equal (len2 x) (len2 a))
+              (equal (len2 y) (len2 b))))
+              
+This conjecture is invalid. Just because their comb-len's are equal does not
+mean x and a have same len and y and b have the same len; x could have the 
+same len as b and y could be the same as a, because the only thing that matters
+is if they products of the two lens are equal.
+To make it valid, change the part after iff to be if the products of lengths are equal.
+
+(implies (and (listp x) (listp y) (listp a) (listp b)
+              (equal (comb-len x y) (comb-len a b)))
+         (equal (* (len2 x) (len2 y))
+                (* (len2 a) (len2 b))))
+         
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION15>>
 15. If a is in (use in2) l and b is in l and c is in l, then the
     length of l is greater than or equal to 3.
 
-...............
+(implies (and (in2 a l) (in2 b l) (in2 c 1))
+         (>= (len2 l) 3))
+         
+This conjecture is invalid, if any of the three variables are equal, then
+l could contain all their unique values and have a length smaller than 3.
+To make it valid, ensure that a and b and c are all unique.
+
+(implies (and (in2 a l) (in2 b l) (in2 c 1)
+              (not (equal a b)) (not (equal b c)) (not (equal a c)))
+         (>= (len2 l) 3))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; <<@QUESTION16>>
@@ -491,7 +563,31 @@ have to perform contract completion first!
     differs from 3 and 4, it is not in y. Then the comb-len of x
     and y is 4.
 
-...............
+(implies (and (in2 1 x) (in2 2 x)
+              (if (and (not (equal a 1)) (not (equal a 2)))
+                  (not (in2 a x))
+                  t)
+              (in2 3 y) (in2 4 y)
+              (if (and (not (equal b 3)) (not (equal b 4)))
+                  (not (in2 b y))
+                  t))
+         (equal (comb-len x y) 4))
+         
+This conjecture is invalid because x and y can contain 1&2 and 3&4 respectively
+and have lengths greater than 2. For example x could be (list 1 2 1), which
+satisfies the first part of the implication but not the second.
+To make it valid, the comb-len can be greater than or equal to 4.
+
+(implies (and (in2 1 x) (in2 2 x)
+              (if (and (not (equal a 1)) (not (equal a 2)))
+                  (not (in2 a x))
+                  t)
+              (in2 3 y) (in2 4 y)
+              (if (and (not (equal b 3)) (not (equal b 4)))
+                  (not (in2 b y))
+                  t))
+         (>= (comb-len x y) 4))
+                  
 
 |#
 
@@ -529,6 +625,7 @@ The following team members filled out the feedback survey provided in
 the link above:
 ---------------------------------------------
 Changzong Liu
-<firstname> <LastName>
+Caden Shelman
+Nihaal Korandla
 
 |#
