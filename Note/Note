@@ -49,3 +49,23 @@ NOT
 AND OR
 = XOR
 APPLY(双线箭头右）
+
+
+
+
+
+
+
+
+(defunc positions (x l)
+  :input-contract (listp n)
+  :output-contract (listp (positions x l))
+  (if (endp l)
+      nil
+      (if (equal x (first l))
+          (cons 0 (inc-all 1 (positions x (rest l)))
+          (cons (inc-all 1 (positions x (rest l))]
+
+
+
+
