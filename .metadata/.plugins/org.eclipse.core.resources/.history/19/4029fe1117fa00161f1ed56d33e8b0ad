@@ -158,7 +158,8 @@ this format.
 (check= (calc-grade '(25) 
                     '(1 1 1)
                     '(2 2))
-        (+ (+ 25 3) 4))
+        (+ (+ 25 3) 4))#|ACL2s-ToDo-Line|#
+
 
 
 #|
