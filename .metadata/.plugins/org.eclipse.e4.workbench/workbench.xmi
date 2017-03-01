@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_XRYncOyEEean1IKWWixMjA" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_XRYnceyEEean1IKWWixMjA" bindingContexts="_XRZ2bOyEEean1IKWWixMjA">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw03.lisp&quot; tooltip=&quot;Assignment 3/hw03.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 3/hw03.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw05.lisp&quot; tooltip=&quot;Assignment 5/hw05.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 5/hw05.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw04.lisp&quot; tooltip=&quot;Assignment 4/hw04.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 4/hw04.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;HW02.lisp&quot; tooltip=&quot;Assignment 2/HW02.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 2/HW02.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw06.lisp&quot; tooltip=&quot;Assignment 6/hw06.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 6/hw06.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;lab7.lisp&quot; tooltip=&quot;Lab/lab7.lisp&quot;>&#xA;&lt;persistable path=&quot;/Lab/lab7.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.session&quot; name=&quot;hw04.lisp.a2s&quot; tooltip=&quot;Assignment 4/hw04.lisp.a2s&quot;>&#xA;&lt;persistable path=&quot;/Assignment 4/hw04.lisp.a2s&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.session&quot; name=&quot;hw06.lisp.a2s&quot; tooltip=&quot;Assignment 6/hw06.lisp.a2s&quot;>&#xA;&lt;persistable path=&quot;/Assignment 6/hw06.lisp.a2s&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;lab5.lisp&quot; tooltip=&quot;Lab/lab5.lisp&quot;>&#xA;&lt;persistable path=&quot;/Lab/lab5.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;lab6.lisp&quot; tooltip=&quot;Lab/lab6.lisp&quot;>&#xA;&lt;persistable path=&quot;/Lab/lab6.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;HW02 finished.lisp&quot; tooltip=&quot;Assignment 2/HW02 finished.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 2/HW02 finished.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.session&quot; name=&quot;hw05.lisp.a2s&quot; tooltip=&quot;Assignment 5/hw05.lisp.a2s&quot;>&#xA;&lt;persistable path=&quot;/Assignment 5/hw05.lisp.a2s&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.DefaultTextEditor&quot; name=&quot;Note&quot; tooltip=&quot;Lab 1/Note&quot;>&#xA;&lt;persistable path=&quot;/Lab 1/Note&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw04.lisp&quot; tooltip=&quot;/Users/echo/Downloads/hw04.lisp&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/echo/Downloads/hw04.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw04.lisp&quot; tooltip=&quot;/Users/echo/Desktop/hw04.lisp&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/echo/Desktop/hw04.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw07.lisp&quot; tooltip=&quot;Assignment 7/hw07.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 7/hw07.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw06-solution.lisp&quot; tooltip=&quot;Assignment 6/hw06-solution.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 6/hw06-solution.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw06.lisp&quot; tooltip=&quot;Assignment 6/hw06.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 6/hw06.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw05.lisp&quot; tooltip=&quot;Assignment 5/hw05.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 5/hw05.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw03.lisp&quot; tooltip=&quot;Assignment 3/hw03.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 3/hw03.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw04.lisp&quot; tooltip=&quot;Assignment 4/hw04.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 4/hw04.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;HW02.lisp&quot; tooltip=&quot;Assignment 2/HW02.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 2/HW02.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;lab7.lisp&quot; tooltip=&quot;Lab/lab7.lisp&quot;>&#xA;&lt;persistable path=&quot;/Lab/lab7.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.session&quot; name=&quot;hw04.lisp.a2s&quot; tooltip=&quot;Assignment 4/hw04.lisp.a2s&quot;>&#xA;&lt;persistable path=&quot;/Assignment 4/hw04.lisp.a2s&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.session&quot; name=&quot;hw06.lisp.a2s&quot; tooltip=&quot;Assignment 6/hw06.lisp.a2s&quot;>&#xA;&lt;persistable path=&quot;/Assignment 6/hw06.lisp.a2s&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;lab5.lisp&quot; tooltip=&quot;Lab/lab5.lisp&quot;>&#xA;&lt;persistable path=&quot;/Lab/lab5.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;lab6.lisp&quot; tooltip=&quot;Lab/lab6.lisp&quot;>&#xA;&lt;persistable path=&quot;/Lab/lab6.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;HW02 finished.lisp&quot; tooltip=&quot;Assignment 2/HW02 finished.lisp&quot;>&#xA;&lt;persistable path=&quot;/Assignment 2/HW02 finished.lisp&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_XRYnceyEEean1IKWWixMjA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_XRYncuyEEean1IKWWixMjA" label="%trimmedwindow.label.eclipseSDK" x="0" y="28" width="1172" height="709">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_XRYnceyEEean1IKWWixMjA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_XRYncuyEEean1IKWWixMjA" label="%trimmedwindow.label.eclipseSDK" x="5" y="23" width="1172" height="709">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workingSets/>"/>
@@ -87,10 +87,9 @@
             <children xsi:type="basic:PartSashContainer" xmi:id="_XRYnhuyEEean1IKWWixMjA" containerData="8328" selectedElement="_XRYnh-yEEean1IKWWixMjA" horizontal="true">
               <children xsi:type="basic:PartSashContainer" xmi:id="_XRYnh-yEEean1IKWWixMjA" containerData="6198" selectedElement="_XRYniOyEEean1IKWWixMjA">
                 <children xsi:type="advanced:Placeholder" xmi:id="_XRYniOyEEean1IKWWixMjA" elementId="org.eclipse.ui.editorss" containerData="8169" ref="_XRZOuOyEEean1IKWWixMjA"/>
-                <children xsi:type="basic:PartStack" xmi:id="_XRYnieyEEean1IKWWixMjA" elementId="bottomRight" visible="false" containerData="1831" selectedElement="_XRYnjOyEEean1IKWWixMjA">
+                <children xsi:type="basic:PartStack" xmi:id="_XRYnieyEEean1IKWWixMjA" elementId="bottomRight" containerData="1831" selectedElement="_XRYnjOyEEean1IKWWixMjA">
                   <tags>newtablook</tags>
                   <tags>noFocus</tags>
-                  <tags>Minimized</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_XRYniuyEEean1IKWWixMjA" elementId="org.eclipse.ui.views.TaskList" toBeRendered="false" ref="_XRZPKuyEEean1IKWWixMjA"/>
                   <children xsi:type="advanced:Placeholder" xmi:id="_XRYni-yEEean1IKWWixMjA" elementId="org.eclipse.ui.views.BookmarkView" toBeRendered="false" ref="_XRZPJeyEEean1IKWWixMjA"/>
                   <children xsi:type="advanced:Placeholder" xmi:id="_XRYnjOyEEean1IKWWixMjA" elementId="org.eclipse.ui.console.ConsoleView" ref="_XRZPMeyEEean1IKWWixMjA"/>
@@ -127,34 +126,32 @@
       <tags>View</tags>
       <tags>categoryTag:Help</tags>
     </sharedElements>
-    <sharedElements xsi:type="advanced:Area" xmi:id="_XRZOuOyEEean1IKWWixMjA" elementId="org.eclipse.ui.editorss" selectedElement="_h-YXAezDEeam48-sWSFj9w">
-      <children xsi:type="basic:PartStack" xmi:id="_h-YXAezDEeam48-sWSFj9w" elementId="PartStack@697a92af" selectedElement="_EBp1IPoXEeaSXeUcXSFgjA">
-        <tags>active</tags>
-        <children xsi:type="basic:Part" xmi:id="_XOj40O44Eeasx5fVaqeZ_g" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Note" iconURI="platform:/plugin/org.eclipse.ui.editors/icons/full/obj16/file_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.ui.DefaultTextEditor&quot; name=&quot;Note&quot; partName=&quot;Note&quot; title=&quot;Note&quot; tooltip=&quot;Note/Note&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Note/Note&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1141&quot; selectionTopPixel=&quot;152&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.ui.DefaultTextEditor</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_EBp1IPoXEeaSXeUcXSFgjA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="hw03.lisp" iconURI="platform:/plugin/acl2s/icons/acl2_file3.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw03.lisp&quot; partName=&quot;hw03.lisp&quot; title=&quot;hw03.lisp&quot; tooltip=&quot;Assignment 3/hw03.lisp&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Assignment 3/hw03.lisp&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;19&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;10611&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>acl2s.plugin.editors.lisp</tags>
-          <tags>removeOnHide</tags>
+    <sharedElements xsi:type="advanced:Area" xmi:id="_XRZOuOyEEean1IKWWixMjA" elementId="org.eclipse.ui.editorss" selectedElement="_YYDnEP4IEeatTtNnwBfLgA">
+      <children xsi:type="basic:PartSashContainer" xmi:id="_YYDnEP4IEeatTtNnwBfLgA" selectedElement="_h-YXAezDEeam48-sWSFj9w" horizontal="true">
+        <children xsi:type="basic:PartStack" xmi:id="_h-YXAezDEeam48-sWSFj9w" elementId="PartStack@697a92af" containerData="8098" selectedElement="_MqeU4P4kEeatTtNnwBfLgA">
           <tags>active</tags>
-          <tags>activeOnClose</tags>
+          <children xsi:type="basic:Part" xmi:id="_XOj40O44Eeasx5fVaqeZ_g" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Note" iconURI="platform:/plugin/org.eclipse.ui.editors/icons/full/obj16/file_obj.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.ui.DefaultTextEditor&quot; name=&quot;Note&quot; partName=&quot;Note&quot; title=&quot;Note&quot; tooltip=&quot;Note/Note&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Note/Note&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1141&quot; selectionTopPixel=&quot;152&quot;/>&#xA;&lt;/editor>"/>
+            <tags>Editor</tags>
+            <tags>org.eclipse.ui.DefaultTextEditor</tags>
+            <tags>removeOnHide</tags>
+          </children>
+          <children xsi:type="basic:Part" xmi:id="_MqeU4P4kEeatTtNnwBfLgA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="hw07.lisp" iconURI="platform:/plugin/acl2s/icons/acl2_file3.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw07.lisp&quot; partName=&quot;hw07.lisp&quot; title=&quot;hw07.lisp&quot; tooltip=&quot;Assignment 7/hw07.lisp&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Assignment 7/hw07.lisp&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;21538&quot; selectionTopPixel=&quot;12901&quot;/>&#xA;&lt;/editor>"/>
+            <tags>Editor</tags>
+            <tags>acl2s.plugin.editors.lisp</tags>
+            <tags>removeOnHide</tags>
+            <tags>active</tags>
+            <tags>activeOnClose</tags>
+          </children>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_fFufcPoXEeaSXeUcXSFgjA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="HW02.lisp" iconURI="platform:/plugin/acl2s/icons/acl2_file3.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;HW02.lisp&quot; partName=&quot;HW02.lisp&quot; title=&quot;HW02.lisp&quot; tooltip=&quot;Assignment 2/HW02.lisp&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Assignment 2/HW02.lisp&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;2755&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>acl2s.plugin.editors.lisp</tags>
-          <tags>removeOnHide</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_x5hgMPoYEeaSXeUcXSFgjA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="hw04.lisp" iconURI="platform:/plugin/acl2s/icons/acl2_file3.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;acl2s.plugin.editors.lisp&quot; name=&quot;hw04.lisp&quot; partName=&quot;hw04.lisp&quot; title=&quot;hw04.lisp&quot; tooltip=&quot;Assignment 4/hw04.lisp&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Assignment 4/hw04.lisp&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;6&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;28171&quot; selectionTopPixel=&quot;11878&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>acl2s.plugin.editors.lisp</tags>
-          <tags>removeOnHide</tags>
+        <children xsi:type="basic:PartStack" xmi:id="_YYDnEf4IEeatTtNnwBfLgA" elementId="PartStack@5536542e" containerData="1902" selectedElement="_T96XAP4IEeatTtNnwBfLgA">
+          <children xsi:type="basic:Part" xmi:id="_T96XAP4IEeatTtNnwBfLgA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="hw07.lisp.a2s" iconURI="platform:/plugin/acl2s/icons/acl2.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;acl2s.plugin.editors.session&quot; name=&quot;hw07.lisp.a2s&quot; partName=&quot;hw07.lisp.a2s&quot; title=&quot;hw07.lisp.a2s&quot; tooltip=&quot;Assignment 7/hw07.lisp.a2s&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Assignment 7/hw07.lisp.a2s&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;92681&quot; selectionTopPixel=&quot;37543&quot;/>&#xA;&lt;/editor>"/>
+            <tags>Editor</tags>
+            <tags>acl2s.plugin.editors.session</tags>
+            <tags>removeOnHide</tags>
+          </children>
         </children>
       </children>
     </sharedElements>
@@ -268,7 +265,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XRZPPuyEEean1IKWWixMjA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_tyYWkPoWEeaSXeUcXSFgjA" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_XRadZuyEEean1IKWWixMjA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_vSBQIP4CEeatTtNnwBfLgA" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_XRadZuyEEean1IKWWixMjA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XRZPS-yEEean1IKWWixMjA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -289,7 +286,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XRZPceyEEean1IKWWixMjA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_tyedMPoWEeaSXeUcXSFgjA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_XRac6eyEEean1IKWWixMjA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_vSIk4P4CEeatTtNnwBfLgA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_XRac6eyEEean1IKWWixMjA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XRZPpuyEEean1IKWWixMjA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -328,11 +325,11 @@
         <tags>TrimStack</tags>
       </children>
     </trimBars>
-    <trimBars xmi:id="_XRZPuOyEEean1IKWWixMjA" elementId="org.eclipse.ui.trim.vertical2" side="Right">
+    <trimBars xmi:id="_XRZPuOyEEean1IKWWixMjA" elementId="org.eclipse.ui.trim.vertical2" toBeRendered="false" side="Right">
       <children xsi:type="menu:ToolControl" xmi:id="_XRZPueyEEean1IKWWixMjA" elementId="org.eclipse.ui.ide.perspectivestack(minimized)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
         <tags>TrimStack</tags>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_XRZPuuyEEean1IKWWixMjA" elementId="bottomRight(acl2s.plugin.perspectives.ACL2s)" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
+      <children xsi:type="menu:ToolControl" xmi:id="_XRZPuuyEEean1IKWWixMjA" elementId="bottomRight(acl2s.plugin.perspectives.ACL2s)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
         <tags>TrimStack</tags>
       </children>
       <children xsi:type="menu:ToolControl" xmi:id="_XRZPu-yEEean1IKWWixMjA" elementId="topRight(acl2s.plugin.perspectives.ACL2s)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
@@ -578,7 +575,7 @@
       <tags>platform:cocoa</tags>
       <parameters xmi:id="_XRZ2GuyEEean1IKWWixMjA" elementId="org.eclipse.ui.views.showView.viewId" name="org.eclipse.ui.views.showView.viewId" value="org.eclipse.ui.views.ProblemView"/>
     </bindings>
-    <bindings xmi:id="_taOVQfoWEeaSXeUcXSFgjA" keySequence="COMMAND+CTRL+F" command="_XRaeTeyEEean1IKWWixMjA"/>
+    <bindings xmi:id="_uz_QUf4CEeatTtNnwBfLgA" keySequence="COMMAND+CTRL+F" command="_XRaeTeyEEean1IKWWixMjA"/>
   </bindingTables>
   <bindingTables xmi:id="_XRZ2HOyEEean1IKWWixMjA" elementId="org.eclipse.debug.ui.debugging" bindingContext="_XRZ2d-yEEean1IKWWixMjA">
     <bindings xmi:id="_XRZ2HeyEEean1IKWWixMjA" keySequence="COMMAND+F2" command="_XRadLuyEEean1IKWWixMjA"/>
@@ -648,7 +645,7 @@
     <bindings xmi:id="_XRZ2WOyEEean1IKWWixMjA" keySequence="COMMAND+SHIFT+." command="_XRadGOyEEean1IKWWixMjA"/>
   </bindingTables>
   <bindingTables xmi:id="_XRZ2WeyEEean1IKWWixMjA" contributorURI="platform:/fragment/org.eclipse.e4.ui.workbench.renderers.swt.cocoa" bindingContext="_XRZ2eeyEEean1IKWWixMjA">
-    <bindings xmi:id="_taO8UPoWEeaSXeUcXSFgjA" keySequence="M1+W" command="_XRaeT-yEEean1IKWWixMjA"/>
+    <bindings xmi:id="_uz_3YP4CEeatTtNnwBfLgA" keySequence="M1+W" command="_XRaeT-yEEean1IKWWixMjA"/>
   </bindingTables>
   <bindingTables xmi:id="_XRZ2W-yEEean1IKWWixMjA" bindingContext="_XRZ2fOyEEean1IKWWixMjA"/>
   <bindingTables xmi:id="_XRZ2XOyEEean1IKWWixMjA" bindingContext="_XRZ2feyEEean1IKWWixMjA"/>

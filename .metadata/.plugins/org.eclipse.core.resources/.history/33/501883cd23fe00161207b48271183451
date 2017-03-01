@@ -814,8 +814,7 @@ b) (implies (and (listp l)(no-dupes l))
                           (equal (num-unique l)(len2 l)))))
 
                           
-First Case (l is empty):
-
+First Case (l is empty)
 (implies (and (listp l)(no-dupes l)) 
          (implies (endp l)(equal (num-unique l)(len2 l))))
 c1. (listp l)
@@ -833,8 +832,9 @@ c4. l = nil {c1, c3, def endp}
 t
 
 
-Second Case (l is not empty):
 
+
+Second Case (l is not empty)
 (implies (and (listp l)(no-dupes l)) 
          (implies (and (not (endp l))
                        (implies (and (listp (rest l))(no-dupes (rest l)))
@@ -846,19 +846,15 @@ c2. (no-dupes l)
 c3. (not (endp l))
 c4. ((listp (rest l)) /\ (no-dupes (rest l)) => (num-unique (rest l)) = (len2 (rest l))
 - - - - - - - -
-c5. (listp (rest l))   {c1, c3}
+c5. (listp (rest l)) {c1, c3}
 c6. (no-dupes l) => (endp l) \/ ( (not (in2 (first l)(rest l))) /\ (no-dupes (rest l)) )  {def no-dupes}
-c7. (not (in2 (first l)(rest l)))   {c6, c2, c3}
-c8. (no-dupes (rest l))    {c6, c2, c3}
-c9. (num-unique (rest l)) = (len2 (rest l))   {c4, c5, c8}
+c7. 
 
-(num-unique l) = (len2 l)
-= {def num-unique, c3, c7}
-(+ 1 (num-unique (rest l))) = (len2 l)
-= {def len2, c3}
-(+ 1 (num-unique (rest l))) = (+ 1 (len2 (rest l)))
-= {arithmetic, c9}
-t
+(in2 (first l)(rest l))
+
+
+
+
                           
                           
 We will claim that this gives us the following theorem (even if you don't
@@ -898,46 +894,7 @@ Phi_unique_ex0: (implies (and (qgroupp g)(equal (num-unique g) 4)(not (in2 0 g))
                          (and (in2 1 g)(in2 2 g)(in2 3 g)(in2 4 g)))
                           
 
-
-First Case:
-
-(implies (qgroupp g) 
-         (implies (valid-qgroup2p g)
-                  (valid-qgroupp g)))
-
-C1. (qgroupp g)
-C2. (valid-qgroup2p g)
------------------
-C3. (no-dupes g)    {C1, C2, def of valid-qgroup2p, Phi_group4_nd}
-C4. (not (in2 0 g))  {C1, C2, def of valid-qgroup2p, Phi_exclude0}
-
-(valid-qgroupp g)
-= {def valid-qgroupp}
-(not (in2 0 g)) /\ (no-dupes g)
-= {C3, C4}
-t
-
-
-Second Case:
-
-(implies (qgroupp g) 
-         (implies (valid-qgroupp g)
-                  (valid-qgroup2p g)))
-                  
-C1. (qgroupp g)
-C2. (valid-qgroupp g)
------------------
-C3. (not (in2 0 g)) /\ (no-dupes g)  {def valid-qgroupp}
-C4. (num-unique g) = (len2 g)    {C1, C3, Phi_nd_uniquelen}
-C5. (len2 g) = 4   {C1, q-group-len-thm}
-C6. (num-unique g) = 4   {C4, C5}
-
-
-(valid-qgroup2p g)
-= {def valid-qgroup2p}
-(and (in2 1 g)(in2 2 g)(in2 3 g)(in2 4 g))
-= {C3, C6, Phi_unique_ex0}
-t
+...............
 
 |#
 

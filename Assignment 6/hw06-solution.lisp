@@ -57,10 +57,6 @@ The Beginner level is the next level after Bare Bones level.
 ; ***************** END INITIALIZATION FOR ACL2s B MODE ******************* ;
 ;$ACL2s-SMode$;Beginner
 #|
-
-Names of ALL group members: Caden Shelman, Changzong Liu, Nihaal Korandla
-
-
 CS 2800 Homework 6 - Spring 2017
 
 
@@ -90,7 +86,7 @@ If your group does not already exist:
    it will cost you points, so please read carefully.
 
 
-Names of ALL group members: Caden Shelman, Changzong Liu, Nihaal Korandla
+Names of ALL group members: FirstName1 LastName1, FirstName2 LastName2, ...
 
 Note: There will be a 10 pt penalty if your names do not follow 
 this format.
@@ -110,17 +106,10 @@ this format.
 ;; For example (m1 n1) (m1 n2)....(m2 n1)(m2 n2)....
 ;; This function shouldn't require recursion.
 (defunc comb-len2 (m n)
-  :input-contract (and (listp m) (listp n))
-  :output-contract (natp (comb-len2 m n))
-  (* (len m) (len n)))
-
-(check= (comb-len2 '() '()) 0)
-(check= (comb-len2 '() '(0)) 0)
-(check= (comb-len2 '(1) '(0)) 1)
-(check= (comb-len2 '(1 2 3) '(0)) 3)
-(check= (comb-len2 '(1 2 3) '(1 2)) 6)
-
-
+   ;; SOLUTION
+   :input-contract (and (listp m)(listp n))
+   :output-contract (natp (comb-len2 m n))
+   (* (len m)(len n)))
 
 (defdata lor (listof rational))
 
@@ -146,21 +135,16 @@ this format.
 ;; Quizzes are worth 1% each so a mark of 18/24 would be given as 3/4.
 ;; You simply need to sum the three lists.
 (defunc calc-grade (e q a)
-  :input-contract (and (lorp e) (lorp q) (lorp a))
+  ;; SOLUTION
+  :input-contract (and (lorp e)(lorp q)(lorp a))
   :output-contract (rationalp (calc-grade e q a))
-  (+ (sum e) (+ (sum q) (sum a))))
+  (+ (sum e)(+ (sum q) (sum a))))
 
-  
 (check= (calc-grade '(24 26) 
                     '(1 1 1 1 1 1 1/2 1/2 1/2 1/2 1/2 1/2 3/4 3/4 3/4 3/4 3/4 3/4 3/4 3/4)
                     '(2 2 2 1 1 1 3/2 3/2 3/2 3/2)) 
-        (+ (+ 50 15) 15)) 
-(check= (calc-grade '(25) 
-                    '(1 1 1)
-                    '(2 2))
-        (+ (+ 25 3) 4))#|ACL2s-ToDo-Line|#
-
-
+        (+ (+ 50 15) 15))#|ACL2s-ToDo-Line|#
+ 
 
 #|
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -335,25 +319,30 @@ solution for comb-len2 is equivalent to your partner's.
 Notice the nested implies? Refer to the course notes for how
 to handle implications in your proof.
 
-C1.(listp m)
-C2.(listp n)
-C3.(not (endp m))
-C4.(comb-len (rest m) n) = (* (len2 (rest m))(len2 n))
--------------------
-C5.(consp m) {C1, C3}
-C6.(listp (rest m)) {C1, C3}
+SOLUTION:
+Context
+C1. (listp m)
+C2. (listp n)
+C3. (not (endp m))
+C4. (implies (listp (rest m)) 
+             (equal (comb-len (rest m) n) 
+                    (* (len2 (rest m))(len2 n))))
+-----------------------
+C5. (listp (rest m)) {def endp, PL, C1, C3}
+C6. (equal (comb-len (rest m) n) (* (len2 (rest m))(len2 n))) {C5, C4, MP}
 
+LHS:
 (comb-len m n)
-= { def.comb-len, C5 }
+= {Def comb-len, C3, if axioms}
 (+ (len2 n) (comb-len (rest m) n))
-= { C4 }
-(+ (len2 n) (* (len2 (rest m)) (len2 n)))
-= { Associative }
-(* (len2 n) (+ (len2 (rest m)) 1))
-= { def.len2 }
-(* (len2 n) (len m))
+= {C6}
+(+ (len2 n)(* (len2 (rest m) (len2 n)))
+= {arithmetic}
+(* (+ 1 (len2 (rest m))) (len2 n))
+= {Def len2}
+(* (len2 m) (len2 n))
 
-
+LHS = RHS
 QED
 
 
@@ -361,7 +350,7 @@ QED
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 2. Your partner's implementation of calc-grade is the following:
 (defunc calc-grade (e q a)
-  :input-contract (and (lorp e)(lorp q)(lorp a))
+  :input-contract  (and (lorp e)(lorp q)(lorp a))
   :output-contract (rationalp (calc-grade e q a))
   (sum (app2 (app2 e q) a)))
   
@@ -371,7 +360,6 @@ QED
   exact same answer by proving the following:
 
 (implies (and (lorp x) (lorp l))
-         
          (and (implies (endp x)
                        (equal (sum (app2 x l)) (+ (sum x) (sum l))))
               (implies (and (rationalp a)
@@ -390,66 +378,103 @@ Thus we can split our proof obligations into two parts.
 1) Write each conjecture you need to prove. Use exportation to make
 your proof easier.
 
-(implies (endp x) 
-         (equal (sum (app2 x l)) (+ (sum x) (sum l))))
-= (implies (and (lorp l) 
-                (lorp x) 
-                (endp x)) 
-           (equal (sum (app2 x l)) (+ (sum x) (sum l))))
+SOLUTION:
+Phi1: (implies (and (lorp x) (lorp l) (endp x))
+               (equal (sum (app2 x l)) (+ (sum x) (sum l))))
 
+and
 
-(implies (and (rationalp a) 
-              (equal (sum (app2 x l)) (+ (sum x) (sum l))))            
-         (equal (sum (app2 (cons a x) l)) (+ (sum (cons a x)) (sum l)))) 
-=(implies (and (rationalp a) 
-               (equal (sum (app2 x l)) (+ (sum x) (sum l))) 
-               (lorp x)
-               (lorp l))
-          (equal (sum (app2 (cons a x) l)) (+ (sum (cons a x)) (sum l))))
-          
-          
+Phi2: (implies (and (lorp x)
+                    (lorp l)
+                    (rationalp a)
+                    (equal (sum (app2 x l)) (+ (sum x) (sum l))))
+                (equal (sum (app2 (cons a x) l)) 
+                       (+ (sum (cons a x)) (sum l))))
+
 2) Prove conjecture 1
-C1.(lorp l)
-C2.(lorp x)
-C3.(endp x)
--------------------
-C4. x = nil { C2, C3 }
+
+SOLUTION:
+Phi1: (implies (and (lorp x) (lorp l) (endp x))
+               (equal (sum (app2 x l)) (+ (sum x) (sum l))))
+
+C1. (lorp x)
+C2. (lorp l)
+C3. (endp x)
 
 (sum (app2 x l))
-= { C4 }
-(sum (app2 nil l))
-= { def app2 }
-(sum l)
+
+= { def. axiom app2|((l y), C3, if axioms 
+    (if axiom and substitution not necessary) }
+
+  (sum l)
+
 = { arithmetic }
-(+ 0 (sum l))
-= { def sum }
-(+ (sum nil) (sum l))
-= { C4 }
-(+ (sum x) (sum l))
+  
+  (+ 0 (sum l))
 
+= { def. axiom sum, C3 }
 
+  (+ (sum x) (sum l))
+
+LHS = RHS
   
   
 3) Prove conjecture 2 (the not endp case). When using the definition
 of app2 and sum, show the substitutions you are using.
 
-C1: (lorp x)
-C2: (lorp l)
-C3: (rationalp a)
-C4: (sum (app2 x l)) = (sum x) + (sum l)
+SOLUTION
+Phi2: (implies (and (lorp x)
+                    (lorp l)
+                    (rationalp a)
+                    (equal (sum (app2 x l)) (+ (sum x) (sum l))))
+                (equal (sum (app2 (cons a x) l)) 
+                       (+ (sum (cons a x)) (sum l))))
 
-(sum (app2 (cons a x) l))
-= { def app2, def cons }
-(sum (cons a (app2 x l)))
-= { def sum }
-(+ a (sum (app2 x l)))
+
+
+C1. (lorp x)
+C2. (lorp l)
+C3. (rationalp a)
+C4. (sum (app2 x l)) = (+ (sum x) (sum l))
+
+  (sum (app2 (cons a x) l))
+
+= { def. axiom app2|((x (cons a x))(y l)), cons axioms, 
+    Def. endp|((l (cons a x))), if axioms (Optional: endp substitution and if axioms) }
+
+  (sum (cons (first (cons a x)) (app2 (rest (cons a x)) l))
+
+= { cons axioms, first-rest axioms }
+
+  (sum (cons a (app2 x l))
+
+= { def. sum|((nl (cons a (app2 x l)))), cons axiom, 
+    def. endp|((l (cons a (app2 x l)))) }
+
+  (+ (first (cons a (app2 x l))) (sum (rest (cons a (app2 x l)))))
+
+= { cons axioms, first-rest axioms }
+
+  (+ a (sum (app2 x l)))
+
 = { C4 }
-(+ a (sum x) (sum l))
-= { def sum, def cons }
-(+ (sum (cons a x)) (sum l))
 
+  (+ a (+ (sum x) (sum l)))
 
+= { arithmetic }
 
+  (+ (+ a (sum x)) (sum l))
+
+= { cons axioms, first-rest axioms }
+
+  (+ (+ (first (cons a x)) (sum (rest (cons a x)))) (sum l))
+
+= { def. sum |((nl (cons a x))), Def. endp; cons axioms, if axioms}
+
+  (+ (sum (cons a x)) (sum l))
+  
+;;;;;;;; END SOLUTION
+  
 As we will see in class soon, the above conjecture, which is now a theorem,
 and your proof in homework 5 gives rise (via what is known as "induction") 
 to the following theorem:
@@ -474,20 +499,25 @@ a theorem for you to prove:
 prove the conjecture is valid. If you use Phi_sum_app, given the substitution
 you are using.
 
-C1.(listp x)
-C2.(listp l)
-C3.(sum (app2 l1 l2)) = (+ (sum l1) (sum l2)))
+SOLUTION:
+Phi: (implies (and (lorp x)(lorp l))
+              (equal (sum (app2 x l))(sum (app2 l x))))
 
-(sum (app2 x l))
-{ C3 }
-=(+ (sum x) (sum l))
-{ commutative }
-=(+ (sum l) (sum x))
-{ C3 }
-=(sum (app2 l x))
+C1. (lorp x)
+C2. (lorp l)
+-------------
+NOTE: students COULD put the use of Phi_sum_app as derived context 
+and it would be fine.
+
+  (sum (app2 x l))
+= {C1, C2, Phi_sum_app|((l1 x)(l2 l)), MP}
+  (+ (sum x) (sum l))
+= {Arithmetic}
+  (+ (sum l) (sum x))
+= {C1, C2, Phi_sum_app|((l1 l)(l2 x)), MP}
+  (sum (app2 l x))
 
 QED
-
 |#
 
 #|
@@ -520,47 +550,35 @@ conjecture (in the test?) or provide a counterexample.
 (test? (implies (and (lorp lr)(not (endp lr)))
                 (> (max lr) (min lr))))
                 
-CounterExample:
+SOLUTION:
+lr = '(1) means min and max return 1.  The difference is thus 0.
 
-lr = '(1) ---- Single element list of rational number
-                
 
 b) Prove the following conjecture
 (implies (and (lorp lr)(not (endp lr))
               (rationalp m)(< m (min lr))
               (implies (and (lorp lr)(not (endp lr)))
                             (<= (min lr) (max lr))))
-         (> (max (cons m lr)) (min (cons m lr))))
+         (> (max (cons m lr))(min (cons m lr))))
 
-C1: (lorp lr)
-C2: (not (endp lr))
+;; SOLUTION
+C1. (lorp lr)
+C2. (not (endp lr))
 C3. (rationalp m)
 C4. (< m (min lr))
-C5. (and (lorp lr)(not (endp lr)))
-       =>   (<= (min lr) (max lr)))
+C5. (implies (and (lorp lr)(not (endp lr)))
+             (<= (min lr) (max lr)))
 -----------------------
-C6. (<= (min lr) (max lr)) { C1, C2, C5, Prop Logic }
-C7 (< m (max lr))          { C4, C6, transitive }
+C6. (<= (min lr) (max lr))) {C5, C1, C2, MP}
+C7. (< m (max lr)) {C6, C4, Arithmetic}
 
-
-(> (max (cons m lr)) (min (cons m lr)))
-= { def min, C1, C2, first-rest axioms }
-(> (max (cons m lr)) (if (< m (min lr))
-                         m
-                         (min lr)))
-= { C4 }
-(> (max (cons m lr)) m)
-= { def max, C1, C2, first-rest axioms }
-(> (if (> m (max lr))
-          m
-          (max lr))
-   m)
-= { C7 }
-(> (max lr) m)
-= { C7 }
-t
-
-
+  (> (max (cons m lr))(min (cons m lr))))
+= {def min, C4, first-rest axioms}
+  (> (max (cons m lr)) m)
+= {def max, C7, if-axioms}
+  (> (max lr) m)
+= {Arithmetic, C7}
+  t
 |#
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -595,71 +613,70 @@ the following conjecture:
          (equal (hasWinner m1 m2 m3)(hasWinner2 m1 m2 m3))))
 
 You may assume the following expression is a theorem:
-Phi_markDef: (implies (markp m)
-                      (or (equal m 'x)(equal m 'o)(equal m '-))
+Phi_markDef: (implies (markp m)(or (equal m 'x)(equal m 'o)(equal m '-))
 
 Hint: Can you represent equality in another way to provide more context?
 Rewrite the conjecture and then prove the various parts.
 
+SOLUTION:
 (implies (and (markp m1)(markp m2)(markp m3))
-         (equal (hasWinner m1 m2 m3)(hasWinner2 m1 m2 m3))))
-= 
+         (and (implies (hasWinner m1 m2 m3)
+                       (hasWinner2 m1 m2 m3))
+              (implies (hasWinner2 m1 m2 m3)
+                       (hasWinner m1 m2 m3))))
+
+Thus we need to prove in two parts.
+Conjecture 1:
 (implies (and (markp m1)(markp m2)(markp m3))
-         (and (implies (hasWinner m1 m2 m3) (hasWinner2 m1 m2 m3))
-              (implies (hasWinner2 m1 m2 m3) (hasWinner m1 m2 m3))))
-              
-              
-First Conjecture:
-(implies (and (markp m1) (markp m2) (markp m3) (hasWinner m1 m2 m3)) 
-         (hasWinner2 m1 m2 m3))
-         
+         (implies (hasWinner m1 m2 m3)
+                  (hasWinner2 m1 m2 m3))
+
 C1. (markp m1)
 C2. (markp m2)
 C3. (markp m3)
 C4. (hasWinner m1 m2 m3)
-----------------
-C5. (or (equal m1 '-) (equal m2 '-) (equal m3 '-)) => nil
-    { def hasWinner }
-C6. (not (or (equal m1 '-) (equal m2 '-) (equal m3 '-))) 
-         =>    (and (equal m1 m2)(equal m1 m3))
-    { C1, C2, C3, def hasWinner }
-C7. (not (or (equal m1 '-) (equal m2 '-) (equal m3 '-)))
-    { C4, C5 }
-C8. (and (equal m1 m2)(equal m1 m3))
-    { C6, C7 }
+---------------
+C5. (not (or (equal m1 '-)(equal m2 '-)(equal m3 '-))) {C4, def hasWinner, PL}
+C6. ~(m1 = '-) /\ ~(m2 = '-) /\ ~(m3 = '-) {PL (DeMorgan's), C5}
+C7. (m1 = m2) /\ (m1 = m3) {PL, C4, def. hasWinner}
+C8. (m1 = m2 = m3 = 'x) \/ ((m1 = m2 = m3 = 'o) 
+          {Phi_MarkDef, MP, C1, C2, C3, C6, C7, PL}
 
-(hasWinner2 m1 m2 m3)
-= { def of hasWinner2 }
-(or (and (equal m1 'x) (equal m2 'x) (equal m3 'x))
-    (and (equal m1 'o) (equal m2 'o) (equal m3 'o)))
-= { C7, C8, Phi_markDef }
-t
+  (hasWinner2 m1 m2 m3)
+= {Def hasWinner2, C1, C2, C3}
+  (or (and (equal m1 'x) (equal m2 'x) (equal m3 'x))
+      (and (equal m1 'o) (equal m2 'o) (equal m3 'o))))
+= {C8, PL}
+  t
 
-        
-Second Conjecture:
-(implies (and (markp m1) (markp m2) (markp m3) (hasWinner2 m1 m2 m3)) 
-         (hasWinner m1 m2 m3))
-              
-              
+Conjecture 2:
+(implies (and (markp m1)(markp m2)(markp m3))
+         (implies (hasWinner2 m1 m2 m3)
+                  (hasWinner m1 m2 m3))
+
 C1. (markp m1)
 C2. (markp m2)
 C3. (markp m3)
 C4. (hasWinner2 m1 m2 m3)
----------------------
-C5. (or (and (equal m1 'x) (equal m2 'x) (equal m3 'x))
-        (and (equal m1 'o) (equal m2 'o) (equal m3 'o)))
-    { def of hasWinner2 }
+---------------
+C5.(or (and (equal m1 'x) (equal m2 'x) (equal m3 'x))
+       (and (equal m1 'o) (equal m2 'o) (equal m3 'o)))) {C4, def hasWinner2}
+C6. (or (equal m1 'x)(equal m1 'o)) {C5, PL}
+C7. (or (equal m2 'x)(equal m2 'o)) {C5, PL}
+C8. (or (equal m3 'x)(equal m3 'o)) {C5, PL}
+C9. (not (equal m1 '-)) {Phi_MarkDef, MP, C1, C6, PL}
+C10. (not (equal m2 '-)) {Phi_MarkDef, MP, C2, C7, PL}
+C11. (not (equal m3 '-)) {Phi_MarkDef, MP, C3, C8, PL}
+C12. (equal m1 m2) {C5, PL}
+C13. (equal m1 m3) {C5, PL}
+NOTE: Much of this derived context can be in the main proof. Both approaches
+are correct.
 
-(hasWinner m1 m2 m3)
-= { def of hasWinner }
-(if (or (equal m1 '-) (equal m2 '-) (equal m3 '-))
-    nil
-    (and (equal m1 m2)(equal m1 m3)))
-= { C1, C2, C3, C5 }
+  (hasWinner m1 m2 m3)
+= {Def hasWinner, C9, C10, C11}
   (and (equal m1 m2)(equal m1 m3))
-= { C5 }
+= {C12, C13}
   t
-
 
 |#
 
@@ -698,7 +715,7 @@ C5. (or (and (equal m1 'x) (equal m2 'x) (equal m3 'x))
   :output-contract (losp (get-vars px))
   (cond ((booleanp px) nil)
         ((symbolp px) (list px))
-        ((equal (len2 px) 2) (get-vars (second px)))
+        ((equal (len px) 2) (get-vars (second px)))
         (t   (merge (get-vars (third px))
                     (get-vars (first px))))))
                     
@@ -715,19 +732,14 @@ C5. (or (and (equal m1 'x) (equal m2 'x) (equal m3 'x))
   be used to prove get-vars DOES NOT return duplicates:
   
 (implies (and (losp l1)(losp l2))
-
          (implies (and (no-dupesp l1)(no-dupesp l2)
-                       
                        (or (endp l1)
-                           
                            (and (not (endp l1)) (in2 (first l1) l2)
                                 (implies (and (losp (rest l1))(losp l2))
                                          (no-dupesp (merge (rest l1) l2))))
-                                         
                            (and (not (endp l1))(not (in2 (first l1) l2))
                                 (implies (and (losp (rest l1))(losp l2))
-                                         (no-dupesp (merge (rest l1) l2)))) ))
-                                         
+                                         (no-dupesp (merge (rest l1) l2))))))
                   (no-dupesp (merge l1 l2))))
  
   Think about breaking this conjecture into 3 cases.
@@ -740,85 +752,89 @@ C5. (or (and (equal m1 'x) (equal m2 'x) (equal m3 'x))
   You won't be able to use Phi_in_merge in this format, but what is
   it equivalent to?  What if you know something about (in2 s l1) and 
   (in2 s l2) ?
-         
-         
-First Case:
-(implies (and (losp l1)(losp l2)
-              (no-dupesp l1)(no-dupesp l2)
-              (endp l1))
-         (no-dupesp (merge l1 l2)))
-         
-C1. (losp l1)
-C2. (losp l2)
-C3. (no-dupesp l1)
-C4. (no-dupesp l2)
-C5. (endp l1)
---------------------
-
-(no-dupesp (merge l1 l2))
-= { C4, def of merge }
-(no-dupesp l2)
-= { C4 }
-t
-
-         
-Second Case:
-(implies (and (losp l1)(losp l2)
-              (no-dupesp l1)(no-dupesp l2)
-              (not (endp l1)) (in2 (first l1) l2)
-              (implies (and (losp (rest l1))(losp l2))
-                       (no-dupesp (merge (rest l1) l2))))
-         (no-dupesp (merge l1 l2)))
-       
-C1. (losp l1)
-C2. (losp l2)
-C3. (no-dupesp l1)
-C4. (no-dupesp l2)
-C5. (not (endp l1))
-C6. (in2 (first l1) l2)
-C7. (and (losp (rest l1))(losp l2)) => (no-dupesp (merge (rest l1) l2))
--------------------------
-C8. (losp (rest l1))     { C1, C5 }
-C9. (no-dupesp (merge (rest l1) l2))   { C7, C8, C2 }
-
-(no-dupesp (merge l1 l2))
-= { def of merge, C6 }
-(no-dupesp (merge (rest l1) l2))
-= { C9 }
-t
-
-         
-Third Case:
-(implies (and (losp l1)(losp l2)
-              (no-dupesp l1)(no-dupesp l2)
-              (not (endp l1)) (not (in2 (first l1) l2))
-              (implies (and (losp (rest l1))(losp l2))
-                       (no-dupesp (merge (rest l1) l2))))
-         (no-dupesp (merge l1 l2)))         
   
-         
-C1. (losp l1)
-C2. (losp l2)
-C3. (no-dupesp l1)
-C4. (no-dupesp l2)
-C5. (not (endp l1))
-C6. (not (in2 (first l1) l2))
-C7. (and (losp (rest l1))(losp l2)) => (no-dupesp (merge (rest l1) l2))
--------------------------
-C8. (losp (rest l1))     { C1, C5 }
-C9. (no-dupesp (merge (rest l1) l2))   { C7, C8, C2 }
-C10. (not (in2 (first l1) (merge (rest l1) l2)))    { C3, C6, def of merge }
+  SOLUTION:
 
-(no-dupesp (merge l1 l2))
-= { def of merge, C6 }
-(no-dupesp (cons (first l1) (merge (rest l1) l2)))
-= { C10, def of merge }
-(no-dupesp (merge (rest l1) l2)) 
-= { C9 }
-t
+  Using DeMorgan's and the contrapositive (called Modus Tollens when using)
+  Phi_in_merge becomes:
+    (implies (and (symbolp s)(losp l1)(losp l2)
+                  (not (in2 s l1))(not (in2 s l2)))
+             (not (in2 s (merge l1 l2))))
+ 
+  So we need to prove s is not in l1 and not in l2 to conclude
+  it's not in the merged list.
+  
+  Case 1:
+  (implies (and (losp l1)(losp l2)(no-dupesp l1)(no-dupesp l2)(endp l1))
+           (no-dupesp (merge l1 l2)))
+  C1. (losp l1)
+  C2. (losp l2)
+  C3. (no-dupesp l1)
+  C4. (no-dupesp l2)
+  C5. (endp l1)
+  
+    (no-dupesp (merge l1 l2))
+  = {Def merge, C5}
+    (no-dupesp l2)
+  = {C4}
+    t
+           
+  Case 2:
+(implies (and (losp l1)(losp l2)(no-dupesp l1)(no-dupesp l2)
+              (not (endp l1))(in2 (first l1) l2)
+              (implies (and (losp (rest l1))(losp l2))
+                       (no-dupesp (merge (rest l1) l2))))
+         (no-dupesp (merge l1 l2)))
 
+  C1. (losp l1)
+  C2. (losp l2)
+  C3. (no-dupesp l1)
+  C4. (no-dupesp l2)
+  C5. (not (endp l1))
+  C6. (in2 (first l1) l2)
+  C7. (implies (and (losp (rest l1))(losp l2)
+                       (no-dupesp (merge (rest l1) l2))))
+  ----------------------
+  C8. (losp (rest l1)) {C5, C1, Def. losp}
+  C9. (no-dupesp (merge (rest l1) l2)) {C7, MP, C8, C2}
+  
+  (no-dupesp (merge l1 l2))
+  = {Def merge, C5, C6}
+  (no-dupesp (merge (rest l1) l2))
+  = {C9}
+  t
+  
+  Case 3:
+(implies (and (losp l1)(losp l2)(no-dupesp l1)(no-dupesp l2)
+              (not (endp l1))(not (in2 (first l1) l2))
+              (implies (and (losp (rest l1))(losp l2))
+                       (no-dupesp (merge (rest l1) l2))))
+         (no-dupesp (merge l1 l2)))
 
-
+  C1. (losp l1)
+  C2. (losp l2)
+  C3. (no-dupesp l1)
+  C4. (no-dupesp l2)
+  C5. (not (endp l1))
+  C6. (not (in2 (first l1) l2))
+  C7. (implies (and (losp (rest l1))(losp l2)
+                    (no-dupesp (merge (rest l1) l2))))
+  ----------------------
+  C8. (losp (rest l1)) {C5, C1, Def. losp}
+  C9. (no-dupesp (merge (rest l1) l2)) {C7, MP, C8, C2}
+  C10. (not (in2 (first l1) (rest l1))) {Def no-dupes, C5, PL}
+  
+  (no-dupesp (merge l1 l2))
+  = {Def merge, C5, C6}
+  (no-dupesp (cons (first l1)(merge (rest l1) l2)))
+  = {Def no-dupes, C5}
+   (if (in2 (first l1) (merge (rest l1) l2)) nil (no-dupesp (merge (rest l1) l2))
+  = {Phi_in_merge|((s (first l1))(l1 ((rest l1)))), MT, C6, C10, if axioms}
+   (no-dupesp (merge (rest l1) l2))
+  = {C9}
+   t
+  The substitution for Phi_in_merge is not needed but hopefully clarifies how
+  it was used.
    
   b) OK.  So you're pretty sure get-vars has no duplicate variables now
   but you turned off contract checking for get-vars.
@@ -826,7 +842,7 @@ t
   Prove the following conjecture:
   (implies (PropExp px) (losp (get-vars px)))
   
-  You might want to break the proof into cases.
+  You might want to break the proof into cases
   
   Our definition of PropEx gives rise to theorem Phi_PX_def
   (implies (PropExp px) (or (booleanp px)
@@ -837,69 +853,68 @@ t
                                  (PropExp (first px)) (PropExp (third px)))))
   You can also assume the following are true:
   Phi_PX_2: (implies (and (listp px)(equal (len2 px) 2)(PropExp (second px)))
-                     (losp (get-vars (second px))))
+                     (losp (get-vars (second px)))))
   Phi_PX_1: (implies (and (listp px)(equal (len2 px) 3)(PropExp (first px)))
                      (losp (get-vars (first px))))
   Phi_PX_3: (implies (and (listp px)(equal (len2 px) 3)(PropExp (third px)))
                      (losp (get-vars (third px))))
-
-
                      
-Four Cases (one for each type of PropEx)          
-                     
-                     
-First Case:
-C1. (PropExp px)
-C2. (booleanp px)
-                     
-(losp (get-vars px)
-= { C2, def of get-vars }
-(losp nil)
-= { def of losp }
-t
-
-
-Second Case:
-C1. (PropExp px)
-C2. (symbolp px)
-                     
-(losp (get-vars px)
-= { C2, def of get-vars }
-(losp (list px))
-= { C2, def of losp }
-t
-
-
-Third Case:
-C1. (PropExp px)
-C2. (listp px)
-C3. (equal (len2 px) 2)
-C4. (UnaryOpp (first px))
-C5. (PropExp (second px))
-                     
-(losp (get-vars px)
-= { C2, C3, def of get-vars }
-(losp (get-vars (second px)))
-= { Phi_PX_2, C2, C3, C5 }
-t
-
-
-Fourth Case:
-C1. (PropExp px)
-C2. (listp px)
-C3. (equal (len2 px) 3)
-C4. (BinOpp (second px))
-C5. (PropExp (first px))
-C6. (PropExp (third px))
-                     
-(losp (get-vars px)
-= { C2, C3 def of get-vars }
-(losp (merge (get-vars (third px))
-             (get-vars (first px))))
-= { merge contract, Phi_PX_1, Phi_PX_3, C2, C3, C5, C6 }
-t
-
-            
+  SOLUTION:
+  Proof by cases based on Phi_PX_def and (PropExp px)
+  
+  Case 1: booleanp px
+  C1. (PropExp px)
+  C2. (booleanp px)
+  ----------------
+    (losp (get-vars px))
+  = {Def get-vars, C2, C1}
+    (losp nil)
+  = {Def losp}
+    t
+    
+  Case 2: symbolp px
+  C1. (PropExp px)
+  C2. (symbolp px)
+  C3. (not (booleanp px))
+  ----------------
+    (losp (get-vars px))
+  = {Def get-vars, C2, C1, C3}
+    (losp (list px))
+  = {Def losp}
+    t
+    
+  Case 3: UnaryOp px
+  C1. (PropExp px)
+  C2. (listp px)
+  C3. (equal (len2 px) 2)
+  C4. (UnaryOpp (first px))
+  C5. (PropExp (second px))
+  ----------------
+  C6. (losp (get-vars (second px))) {Phi_PX_2, MP, C3, C2, C5}
+  
+    (losp (get-vars px))
+  = {Def get-vars, C2, C3}
+    (losp (get-vars (second px))
+  = {C6}
+    t
+ 
+ Case 4: BinaryOp px
+  C1. (PropExp px)
+  C2. (listp px)
+  C3. (equal (len2 px) 3)
+  C4. (PropExp (first px))
+  C5. (BinOpp (second px))
+  C6. (PropExp (third px))
+  ----------------
+  C7. (losp (get-vars (first px))) {Phi_PX_1, MP, C3, C2, C5, C4, C6}
+  C8. (losp (get-vars (third px))) {Phi_PX_3, MP, C3, C2, C5, C4, C6}
+  
+    (losp (get-vars px))
+  = {Def get-vars, C2, C3}
+    (losp (merge (get-vars (first px))(get-vars (third px))))
+  = {Contract axiom merge, C7, C8}
+    t
+    Q.E.D.
 |#
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -929,8 +944,7 @@ questionnaire.
 The following team members filled out the feedback survey provided by 
 the link above:
 ---------------------------------------------
-Nihaal Korandla
-Caden Shelman
-Changzong Liu
+<firstname> <LastName>
+<firstname> <LastName>
 
 |#
