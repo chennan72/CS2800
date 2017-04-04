@@ -56,7 +56,71 @@ your induction schemes, if any, for phi.
         ((not (natp (first l))) nil)
         (t                      (natlistp (rest l)))))
 
-...
+Valid
+
+1. (not (listp l)) => phi
+
+2. (listp l) /\ (endp l) => phi
+
+3. (listp l) /\ (not (endp l)) /\ (not (natp (first l) 
+                                          
+4.  (listp l) /\ (not (endp l)) (natp (first l)) /\ phi||((l (rest l))) = phi
+
+Case 1
+
+C1. (listp l)
+C2. (not (listp l))
+------------------------
+C3. f { C1 C2}
+
+f => phi = true
+
+Case 2
+
+C1. (listp l)
+C2. (endp l)
+-----------------
+C3. (equal l nil)
+
+(natlistp l)
+={Def.natlistp, C1}
+(endp l)
+={C3 PL}
+(endp nil)
+
+t
+
+Case 3
+
+C1. (listp l) 
+C2. (not (endp l))
+C3. (not (natp (first l)))
+--------------------------
+C4. (consp l) {C1 C2}
+C5. (listp l) {C1 C2 C4}
+
+(natlistp l)
+={def.natlistp, C4)
+(or (not (natp (first l))
+         (natlistp (rest l))))
+={C3 PL}
+t
+
+Case 4
+
+C1. (listp l) 
+C2. (not (endp l))
+C3. (natp (first l))
+C4. (natlistp (rest l))
+--------------------------
+C5. (consp l)
+C6. (listp (rest l))
+
+(natlistp l)
+=
+(natlistp (rest l))
+=
+t
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -69,7 +133,7 @@ your induction schemes, if any, for phi.
         ((equal n 1) 1)
         (t           (+ (fib (- n 1)) (fib (- n 2))))))
 
-...
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -84,7 +148,59 @@ your induction schemes, if any, for phi.
 
 Hint: first rewrite this function equivalently using a single cond.
 
-...
+
+(defunc exists-symbol (l)
+  :input-contract (listp l)
+  :output-contract (booleanp (exists-symbol l))
+  (cond ((endp l) nil)
+        ((symbolp (first l)) t)
+        (t (exists-symbol (rest l)))))
+
+
+
+
+
+               
+1. (not (listp l))
+
+2. (listp l) /\ (endp l)
+
+3. (listp l) /\ (not (endp l)) /\ (symbolp (first l))
+
+4. (listp l) /\ (not (endp l)) /\ (not (symbolp (first l))) /\ phi||(l rest l)
+
+Case 1
+
+C1. (listp l)
+C2. (not (listp l)
+------------
+C3. f {C1 C2}
+
+f => (exists-symbol l) = true
+
+Case 2
+
+C1. (listp l)
+C2. (endp l)
+------
+C3. l = nil {C1 C2}
+
+
+
+
+Case 3
+
+C1.(listp l)
+C2. (not (listp l))
+C3. (symbolp (first l))
+-----
+C4. (consp l)
+
+
+Case 4
+
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -98,7 +214,6 @@ Hint: first rewrite this function equivalently using a single cond.
     (cons (list (first x) (first y))
           (zip (rest x) (rest y)))))
 
-...
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -226,9 +341,9 @@ Consider the following function definitions:
   :input-contract (listp a)
   :output-contract (listp (rd-induct a))
   (cond ((endp a)                nil)
-	((endp (rest a))         (list (first a)))
-	((in (first a) (rest a)) (rd-induct (rest a)))
-	(t                       (cons (first a) (rd-induct (rest a))))))
+        ((endp (rest a))         (list (first a)))
+        ((in (first a) (rest a)) (rd-induct (rest a)))
+        (t                       (cons (first a) (rd-induct (rest a))))))
 
 (c) How does the induction scheme suggested by rd-induct differ from that suggested by remove-dups?
 
